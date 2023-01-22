@@ -13,7 +13,7 @@ export default () => {
 
     const createNewHabit = async (event: FormEvent) => {
         event.preventDefault()
-        console.log(title + weekDays)
+        
 
         if(!title || weekDays.length === 0){
             return
@@ -51,7 +51,7 @@ export default () => {
                 placeholder="ex.: Exercícios, dormir bem, etc..."
                 autoFocus
                 value={title}
-                className="p-4 rounded-lg mt-3 bg-zinc-800 text-white placeholder:text-zinc-400 "
+                className="p-4 rounded-lg mt-3 bg-zinc-800 text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-offset-2 focus:ring-offset-zinc-900"
                 onChange={(e)=>setTitle(e.target.value)}
             />
             <label htmlFor="" className="font-semibold leading-tight mt-4">
@@ -62,12 +62,13 @@ export default () => {
                 {availableWeekDays.map((weekDay,index)=>(
                     <Checkbox.Root
                             key={weekDay}
-                            className="flex items-center gap-3 group"
+                            className="flex items-center gap-3 group focus:outline-none"
                             onCheckedChange={()=>handleToogleWeekDay(index)}
                             checked={weekDays.includes(index)}
                         >
                             <div className="h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-2 border-zinc-800 
-                            group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-500">
+                             group-focus:ring-2 group-focus:ring-violet-600 group-focus:ring-offset-2 group-focus:ring-offset-background
+                            group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-500 transition-colors">
                                 <Checkbox.Indicator>
                                     <Check size={20} color='white' />
                                 </Checkbox.Indicator>
@@ -83,7 +84,8 @@ export default () => {
             </div>
             
 
-            <button type="submit" className="p-4 mt-6 rounded-lg flex items-center justify-center gap-3 font-semibold bg-green-600 hover:bg-green-500 " >
+            <button type="submit" 
+                className="p-4 mt-6 rounded-lg flex items-center justify-center gap-3 font-semibold bg-green-600 hover:bg-green-500 transitions-colors focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-zinc-900" >
                 <Check size={20} weight='bold'/>
                 Confirmar
             </button>
