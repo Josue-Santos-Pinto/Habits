@@ -1,5 +1,6 @@
 import React from "react";
 import HabitDay from "./components/HabitDay";
+import './lib/dayjs'
 import Header from "./components/Header";
 import SummaryTable from "./components/SummaryTable";
 import './styles/global.css'

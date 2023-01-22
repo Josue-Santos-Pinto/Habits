@@ -1,7 +1,17 @@
+import React,{ useEffect, useState } from 'react'
 import LogoImage from  '../assets/logo.svg'
 import {Plus} from 'phosphor-react'
 import HabitDay from './HabitDay'
 import { generateDatesFromYearBeginning } from '../utils/generate-dates-from-year-beginning'
+import { api } from '../lib/axios'
+import dayjs from 'dayjs'
+
+type Summary = {
+    id: string,
+    date: string,
+    amount: number,
+    completed: number
+}[]
 
 export default () => {
 
@@ -21,6 +31,14 @@ export default () => {
 
         const amountOfDaysToFill = minimumSummaryDates - summaryDates.length
 
+        const [summary, setSummary] = useState<Summary>([])
+
+        useEffect(()=>{
+            api.get('/summary').then((response)=>{
+                setSummary(response.data)
+            })
+        },[])
+
 
 
     return (
@@ -35,13 +53,18 @@ export default () => {
 
             <div className='grid grid-rows-7 grid-flow-col gap-3'>
                 
-                    {summaryDates.map(date=>(
+                    {summaryDates.map(date=>{
+                        const dayInSummary = summary.find(day => {
+                            return dayjs(date).isSame(day.date,'day')
+                        })
+                        return (
                         <HabitDay 
-                            key={date.toString()}    
-                            amount={5} 
-                            completed={Math.round(Math.random() * 5)}     
+                            key={date.toString()}  
+                            date={date}  
+                            amount={dayInSummary?.amount} 
+                            completed={dayInSummary?.completed}     
                         />
-                        ))}
+                        )})}
 
                     {amountOfDaysToFill > 0 && Array.from({length: amountOfDaysToFill})
                     .map((_,i)=>(
