@@ -13,5 +13,7 @@ app.register(appRoutes)
 
 app.listen({
     port:3333,
-
-}).then(()=>console.log('Server Running'))
+    host:'0.0.0.0'
+}).then(()=>{
+    console.log('HTTP Server Running! \n Access: http://localhost:3333/')
+})
