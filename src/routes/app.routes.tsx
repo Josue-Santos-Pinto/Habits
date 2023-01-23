@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import Habit from "../screens/Habit";
+import { Habit } from "../screens/Habit";
 import Home from "../screens/Home";
 import New from "../screens/New";
 
