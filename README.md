@@ -16,12 +16,12 @@ _Radix_
 
 ### Home <br> <br>
 
-![tela home](./READMEassets/Home-ReactJs.PNG)
+![tela home](./READMEassets/Home.PNG)
 
 ### Cadastrar novo hábito <br> <br>
 
-![tela home](./READMEassets/NewHabit.PNG)
+![tela novo habito](./READMEassets/NewHabit.PNG)
 
 ### Marcar hábito como concluído <br> <br>
 
-![tela home](./READMEassets/HabitsList.PNG)
+![tela marcar hábito](./READMEassets/HabitsList.PNG)
